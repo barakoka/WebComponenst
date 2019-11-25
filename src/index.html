@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+
+  <!-- <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .side-nav ul {
+      list-style: none;
+    }
+    .side-nav a {
+      text-decoration: none;
+      color: blueviolet;
+      font-size: 18px;
+    }
+  </style> -->
+
+  <script type="module" src="/build/bmi-component-stencil.esm.js"></script>
+  <script nomodule src="/build/bmi-component-stencil.js"></script>
+
+</head>
+<body>
+  <div class="main-container" style="margin-left: 600px;">
+    <button id="show-side-drawer" >Show side menu</button>
+    <stock-price></stock-price>
+  </div>
+  <keepit-side-drawer>
+    <nav class="side-nav">
+      <ul>
+        <li><a href="/">A link 1</a></li>
+        <li><a href="/">A link 2</a></li>
+        <li><a href="/">A link 3</a></li>
+      </ul>
+    </nav>
+  </keepit-side-drawer>
+
+  <keepit-banner-container 
+    text1="Click here to try"
+    text2="The New Keepit"
+    text3="Experience!"
+    text4 = "You can always go back by changing interface preference in account settings."
+  >
+  </keepit-banner-container>
+  
+
+  <script>
+    const keepitBannerContainer = document.querySelector('keepit-banner-container');
+    const config = { attributes: true};
+    const callback = function(mutationsList, observer) {
+      for(let mutation of mutationsList) {
+        if (mutation.type === 'attributes' & mutation.attributeName === 'redirect-to-ui-2') {
+          console.log('The ' + mutation.attributeName + ' attribute was modified.');
+        }
+      }
+    };
+
+    const observer = new MutationObserver(callback);
+    observer.observe(keepitBannerContainer, config);
+
+    keepitBannerContainer.addEventListener('redirect', () => console.log('Event emmited!!!'));
+    keepitBannerContainer.addEventListener('toggleBunner', data => {
+      console.log(data.detail.value)
+    });
+
+    const sideDrawerButton = document.querySelector('#show-side-drawer');
+    const sideDrawer =  document.querySelector('keepit-side-drawer');
+    sideDrawerButton.addEventListener('click', () => {
+      if(!sideDrawer.open){
+        sideDrawer.makeOpen();
+        sideDrawerButton.textContent = 'Close side menu';
+      } else {
+        sideDrawer.open = false;
+        sideDrawerButton.textContent = 'Show side menu';
+      }
+    })
+    sideDrawer.titleName = 'Side Menue';
+    // setTimeout(() => {
+    //   sideDrawer.titleName = 'Side Menue Changed';
+    // }, 3000)
+  </script>
+</body>
+
+</html>

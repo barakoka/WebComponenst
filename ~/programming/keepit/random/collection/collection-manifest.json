@@ -1,0 +1,13 @@
+{
+  "entries": [
+    "components/keepit-banner-kontainer/keepit-banner-kontainer.js",
+    "components/side-drawer/side-drawer.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.6.1",
+    "typescriptVersion": "3.6.3"
+  },
+  "collections": [],
+  "bundles": []
+}
