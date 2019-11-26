@@ -1,0 +1,1 @@
+import{p as e,b as t}from"./p-b9aae3b1.js";e().then(e=>t([["p-xuqg8n3h",[[1,"keepit-banner-container",{showFullBanner:[1540,"show-full-banner"],text1:[1],text2:[1],text3:[1],text4:[1]}],[1,"keepit-side-drawer",{titleName:[513,"title"],open:[1540],showContact:[32],makeOpen:[64]}]]]],e));

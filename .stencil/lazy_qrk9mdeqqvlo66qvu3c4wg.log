@@ -1,0 +1,25 @@
+import { registerInstance as __stencil_registerInstance, createEvent as __stencil_createEvent } from "@stencil/core";
+import { h } from "@stencil/core";
+export const KeepitBannerComponent = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.redirect = __stencil_createEvent(this, "redirect", 7);
+        this.toggleBunner = __stencil_createEvent(this, "toggleBunner", 7);
+    }
+    makeOpen() {
+        this.showFullBanner = !this.showFullBanner;
+        this.toggleBunner.emit({ value: this.showFullBanner });
+    }
+    handleUi2() {
+        this.redirect.emit();
+    }
+    render() {
+        let mainContent = (h("div", { class: "in-one-line" }, h("div", { class: "close-btn", onClick: this.makeOpen.bind(this) }), h("div", { class: "new-experience-line", onClick: this.handleUi2.bind(this) }, `${this.text1} ${this.text2} ${this.text3}`)));
+        if (this.showFullBanner) {
+            mainContent = (h("div", { class: "keepit-banner-container" }, h("div", { class: "close-btn", onClick: this.makeOpen.bind(this) }), h("div", { class: "info-container" }, h("div", { class: "benefits-info" }, h("div", { class: "benefits-info_icon" }), h("div", { class: "benefits-info_icon" }), h("div", { class: "benefits-info_icon" }), h("div", { class: "benefits-info_icon" })), h("div", { class: "new-experience-btn", onClick: this.handleUi2.bind(this) }, h("div", { class: "secondary-text" }, this.text1), h("div", { class: "secondary-text" }, this.text2), h("div", { class: "main-text" }, this.text3))), h("div", { class: "secondary-info-container" }, h("div", { class: "go-back-text" }, this.text4))));
+        }
+        return mainContent;
+    }
+    static get assetsDirs() { return ["../icons"]; }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:keepit-banner-container"; }
+};

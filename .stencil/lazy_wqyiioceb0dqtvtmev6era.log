@@ -1,0 +1,26 @@
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from "@stencil/core";
+export const SideDrawer = class {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.showContact = false;
+    }
+    onCloseDrawer() {
+        this.open = false;
+    }
+    onContentChange(content) {
+        this.showContact = content === 'contact';
+    }
+    async makeOpen() {
+        this.open = true;
+    }
+    render() {
+        let mainContent = h("slot", null);
+        if (this.showContact) {
+            mainContent = (h("div", { id: "contact-information" }, h("h2", null, "Contact Information"), h("p", null, "Your cant reach us via phone or email."), h("ul", null, h("li", null, "Phone: 1234567890"), h("li", null, "Email:", h("a", { href: "mailto:something@something.com" }, "something@something.com")))));
+        }
+        let content = (h("aside", null, h("header", null, h("button", { onClick: this.onCloseDrawer.bind(this) }, "X"), h("h1", null, this.titleName)), h("section", { id: "tabs" }, h("button", { class: this.showContact ? '' : 'active', onClick: this.onContentChange.bind(this, 'nav') }, "Navigation"), h("button", { class: this.showContact ? 'active' : '', onClick: this.onContentChange.bind(this, 'contact') }, "Contact")), h("main", null, mainContent)));
+        return content;
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:keepit-side-drawer"; }
+};

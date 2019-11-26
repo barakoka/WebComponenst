@@ -19,7 +19,9 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "c-build": "stencil build --docs && ./copyToKeepitProject.sh",
+    "copy": "./copyToKeepitProject.sh"
   },
   "devDependencies": {
     "@stencil/core": "^1.7.5",
